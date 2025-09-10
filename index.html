@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora da Aline</title>
+  <style>
+    body {
+      background-color: #2d004d;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #cc99ff;
+    }
+
+    .calculadora {
+      background-color: #4b0082;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      height: 40px;
+      font-size: 20px;
+      text-align: right;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .botoes button {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #9933ff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .botoes button:hover {
+      background-color: #b266ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calculadora da Aline</h1>
+
+  <div class="calculadora">
+    <input type="text" id="display" readonly>
+    <div class="botoes">
+      <button onclick="addChar('1')">1</button>
+      <button onclick="addChar('2')">2</button>
+      <button onclick="addChar('3')">3</button>
+      <button onclick="addChar('+')">+</button><br>
+
+      <button onclick="addChar('4')">4</button>
+      <button onclick="addChar('5')">5</button>
+      <button onclick="addChar('6')">6</button>
+      <button onclick="addChar('-')">-</button><br>
+
+      <button onclick="addChar('7')">7</button>
+      <button onclick="addChar('8')">8</button>
+      <button onclick="addChar('9')">9</button>
+      <button onclick="addChar('*')">*</button><br>
+
+      <button onclick="addChar('0')">0</button>
+      <button onclick="addChar('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="addChar('/')">/</button><br>
+
+      <button onclick="clearDisplay()" style="width: 214px;">C</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function addChar(char) {
+      display.value += char;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        let resultado = eval(display.value);
+        // Resultado errado propositalmente: sempre soma 1 no resultado final
+        display.value = resultado + 1;
+      } catch (e) {
+        display.value = 'Erro';
+      }
+    }
+  </script>
+
+</body>
+</html>
